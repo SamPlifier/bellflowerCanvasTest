@@ -63,8 +63,8 @@ function Circle(x, y, dx, dy, radius) {
     this.dx = dx;
     this.dy = dy;
     this.radius = radius;
-    this.maxRadius = 30;
-    this.minRadius = 3;
+    this.maxRadius = radius * 10;
+    this.minRadius = radius;
     this.color = colors[Math.floor(Math.random() * colors.length)];
     this.draw = function() {
         c.beginPath();
@@ -83,17 +83,17 @@ function Circle(x, y, dx, dy, radius) {
         this.y += this.dy;
         if (Math.abs(mouse.x - this.x) < 30 && Math.abs(mouse.y - this.y) < 30) {
             if (this.radius < this.maxRadius) {
-                this.radius += .2;
+                this.radius += 1;
             }
         } else if (this.radius > this.minRadius) {
-            this.radius -= .2;
+            this.radius -= .25;
         }
         this.draw();
     }
 }
 circleArray = [];
 
-for (let i = 0; i < 100; i++) {
+for (let i = 0; i < 350; i++) {
     let radius = Math.random() * 3 + 1;
     let x = Math.random() * (width - radius * 2) + radius;
     let y = Math.random() * (height - radius * 2) + radius;
